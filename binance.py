@@ -252,6 +252,14 @@ def ticker_order_books():
     return book_tickers
 
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+
 def ticker_24hr(symbol):
     """
     Gets the 24 hour price change statistics for a give market symbol
@@ -262,7 +270,7 @@ def ticker_24hr(symbol):
     ticker = _geturl_json(_URLS["ticker_24hr"], {"symbol": symbol})
 
     for key in ticker:
-        if isinstance(ticker[key], str):
+        if isinstance(ticker[key], str) and is_number(ticker[key]):
             ticker[key] = Decimal(ticker[key])
 
     return ticker
