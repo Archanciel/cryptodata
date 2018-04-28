@@ -15,6 +15,10 @@ from apikeyfilegenerator import ApiKeyFileGenerator
 class TestApiKeyFileGenerator(unittest.TestCase):
 
     def testCreateKeyFile(self):
+        '''
+        This test demonsttates how to test a command line script using artparse.
+        :return:
+        '''
         ap = ApiKeyFileGenerator()
         ap.createKeyFile(['-a', 'key', '-s', 'secret key', '-f', 'testfile', '-pw', 'monpw'])
 

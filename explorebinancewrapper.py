@@ -9,7 +9,8 @@ from apikeyfilegenerator import ApiKeyFileGenerator
 DECODE_PW = 'c2_pw%&_23'
 binance.enable_logging(True)
 
-# obtain from file the binance encoded API keys
+# obtain from file the binance encoded API keys. This file was created using
+# ApiKeyFileGenerator.
 with open(ApiKeyFileGenerator.FILE_PATH + 'bi.bin', 'rb') as handle:
     encryptedKeyList = pickle.load(handle)
 

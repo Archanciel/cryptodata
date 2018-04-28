@@ -52,6 +52,11 @@ class ApiKeyFileGenerator:
 
 
     def createKeyFile(self, commandLineArgs = None):
+        '''
+        Usage: python apikeyfilegenerator + arguments
+        :param commandLineArgs: only there for unit testing purpose.
+        :return:
+        '''
         if commandLineArgs == None:
             commandLineArgs = sys.argv[1:]
 
