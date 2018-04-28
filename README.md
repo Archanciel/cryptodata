@@ -2,3 +2,4 @@
 
 ## Required libraries
 * pickle
+* binance
