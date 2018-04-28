@@ -1,9 +1,9 @@
-import binance
 import asyncio
-import time
+import datetime
 import pickle
-from apikeyfilegenerator import ApiKeyFileGenerator
 
+import binance
+from apikeyfilegenerator import ApiKeyFileGenerator
 
 # Turn logging on, its off by default
 DECODE_PW = 'c2_pw%&_23'
@@ -129,9 +129,13 @@ def data_streams():
     stream = binance.Streamer()
 
     async def stop():
+        startTime = datetime.datetime.now()
+        print('Starting receiving RT data at {}'.format(startTime.strftime('%H:%M:%S')))
         await(asyncio.sleep(20))
         stream.close_all()
         asyncio.get_event_loop().stop()
+        endTime = datetime.datetime.now()
+        print('Received RT data from {} to {}'.format(startTime.strftime('%H:%M:%S'), endTime.strftime('%H:%M:%S')))
 
     def on_order_book(data):
         print("order book changes - ", data)
