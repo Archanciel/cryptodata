@@ -145,6 +145,29 @@ def data_streams():
 
 
     def on_candlestick(data):
+        '''
+        Candlestick data format
+            {'t': 1525019820000,start time
+            'T': 1525019879999, end time
+            's': 'ETHBTC',
+            'i': '1m',
+            'f': 57326037,      first trade number
+            'L': 57326183,      last trade number
+            'o': '0.07282300',
+            'c': '0.07290700',
+            'h': '0.07293300',
+            'l': '0.07279800',
+            'v': '48.57300000', volume
+            'n': 147,           number of trades
+            'x': False,
+            'q': '3.53912310',  quote asset volume (volume in quotation currency, i.e. in BTC)
+            'V': '25.57800000', taker buy base asset volume
+            'Q': '1.86451044',  taker buy quote asset volume
+            'B': '0'}}
+
+        :param data:
+        :return:
+        '''
         print("new candlesticks - ", data)
         print("all candlesticks- ", stream.get_candlesticks("ETHBTC"))
 
@@ -162,6 +185,6 @@ def data_streams():
 
 
 market_data()
-account()
+#account()
 user_stream()
 data_streams()
