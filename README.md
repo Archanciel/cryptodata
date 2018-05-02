@@ -1,5 +1,5 @@
 # CRYPTODATA
 
 ## Required libraries
-* pickle
+* websockets
 * binance
