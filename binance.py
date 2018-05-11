@@ -579,6 +579,7 @@ class Streamer:
         :param symbol: the market symbol (ie: BNBBTC)
         :param callback: a function to call when new data comes in
         """
+        self.__trades[symbol] = []
         url = "wss://stream.binance.com:9443/ws/" + symbol.lower() + "@aggTrades"
         asyncio.Task(self.__run(url, "trades" + symbol, callback))
 
@@ -610,6 +611,7 @@ class Streamer:
         :param symbol: the market symbol (ie: BNBBTC)
         """
 
+        del self.__trades[symbol]
         self.__close("trades_" + symbol)
 
     def __close(self, id):
