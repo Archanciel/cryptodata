@@ -12,6 +12,7 @@ class ApiKeyFileGenerator:
         '''
         Uses argparse to acquire the user command line arguments.
 
+        :param argList: were acquired from sys.argv or set by test code
         :return: apiKey, apiSecretKey, binary file name (without extention), password
         '''
         parser = argparse.ArgumentParser(
