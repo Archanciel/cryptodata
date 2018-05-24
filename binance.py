@@ -580,7 +580,8 @@ class Streamer:
         :param callback: a function to call when new data comes in
         """
         self.__trades[symbol] = []
-        url = "wss://stream.binance.com:9443/ws/" + symbol.lower() + "@aggTrades"
+#        url = "wss://stream.binance.com:9443/ws/" + symbol.lower() + "@aggTrades" not working !
+        url = "wss://stream.binance.com:9443/ws/" + symbol.lower() + "@trade"
         asyncio.Task(self.__run(url, "trades" + symbol, callback))
 
     def get_trades(self, symbol):
