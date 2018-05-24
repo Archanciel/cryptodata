@@ -183,8 +183,32 @@ def data_streams():
 
     asyncio.get_event_loop().run_forever()
 
+def trade_stream():
+    print("\n-------- Trade Stream example --------\n")
 
-market_data()
+    stream = binance.Streamer()
+
+    async def stop():
+        startTime = datetime.datetime.now()
+        print('Starting receiving RT data at {}'.format(startTime.strftime('%H:%M:%S')))
+        await(asyncio.sleep(40))
+        stream.close_all()
+        asyncio.get_event_loop().stop()
+        endTime = datetime.datetime.now()
+        print('Received RT data from {} to {}'.format(startTime.strftime('%H:%M:%S'), endTime.strftime('%H:%M:%S')))
+
+    def on_trades(data):
+        print("trade update - ", data)
+
+    stream.add_trades("ETHBTC", on_trades)
+
+    asyncio.Task(stop())
+
+    asyncio.get_event_loop().run_forever()
+
+
+#market_data()
 #account()
-user_stream()
-data_streams()
+#user_stream()
+#data_streams()
+trade_stream()
